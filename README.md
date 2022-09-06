@@ -114,3 +114,7 @@
 ### Build image from Dockerfile
 - `git clone git@github.com:LadyForest/tpch-mysql.git && cd tpch-mysql`
 - `docker image build -t {image} .`
+
+### Run directly without Docker
+- `git clone git@github.com:LadyForest/tpch-mysql.git && cd tpch-mysql/TPC-H\ V3.0.1/dbgen/`
+- `./dbgen -h`
