@@ -22,12 +22,14 @@ LABEL version="0.1"
 LABEL description="tpch-mysql"
 
 ARG src="./TPC-H V3.0.1/"
-COPY ${src} /tpch/
+COPY "docker-entrypoint.sh" ${src} /tpch/
 WORKDIR /tpch/dbgen
 RUN apt-get update && apt-get install -y \
     build-essential \
     vim \
-    && make -d
+    && make -d \ 
+    && chmod +x ../docker-entrypoint.sh
 
-# keep container alive
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+ENTRYPOINT ["../docker-entrypoint.sh"]
+# print USAGE by default
+CMD [ "-h" ]
